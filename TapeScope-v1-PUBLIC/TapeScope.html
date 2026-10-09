@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TapeScope</title><link rel="stylesheet" href="terminal.css"></head>
+<body>
+<div id="app">
+  <header>
+    <div><div class="eyebrow">RAW / READ-ONLY</div><div class="title">TapeScope</div></div>
+    <div class="quote"><span id="last">—</span><span id="sideTag"></span></div>
+    <div class="affiliate"><a id="vestAffiliate" href="https://next.vestmarkets.com/r/wptapescope" target="_blank" rel="noopener noreferrer" title="Affiliate link — TapeScope may earn a commission if you create or use a Vest account through this link.">OPEN VEST ↗</a><span>affiliate · WPTAPESCOPE</span></div>
+    <div class="status"><span id="dot"></span><span id="status">CONNECTING</span></div>
+  </header>
+  <div class="toolbar">
+    <label>MARKET <input id="market" value="NDX-USD-PERP"></label>
+    <label>VIEW <select id="mode"><option value="tick">Tick stream</option><option value="candles" selected>OHLC</option></select></label>
+    <label class="candleOnly">SOURCE <select id="src"><option value="trades" selected>Trades</option><option value="klines">Vest klines</option></select></label>
+    <label class="candleOnly">TF <select id="tf"><option value="5000">5s</option><option value="15000">15s</option><option value="30000">30s</option><option value="60000" selected>1m</option><option value="180000">3m</option><option value="300000">5m</option><option value="900000">15m</option><option value="1800000">30m</option><option value="3600000">1h</option></select></label>
+    <label class="tickOnly">BUBBLE <select id="bub"><option value="0">uniform</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+    <label class="tickOnly">GROUP <select id="grp"><option value="print">each print</option><option value="seq" selected>taker order (seq)</option></select></label>
+    <label>SPAN <select id="span"><option value="60">1m</option><option value="300">5m</option><option value="900">15m</option><option value="1800" selected>30m</option><option value="3600">1h</option><option value="7200">2h</option><option value="21600">6h</option><option value="86400">24h</option></select></label>
+    <label>BACKFILL <select id="hist"><option value="1800">30m</option><option value="7200" selected>2h</option><option value="21600">6h</option><option value="86400">24h</option></select></label>
+    <button id="livebtn" class="on">LIVE</button>
+    <button id="history">LOAD HISTORY</button>
+    <button id="reconnect">RECONNECT</button>
+    <button id="clear">CLEAR</button>
+    <button id="csv">EXPORT CSV</button>
+  </div>
+  <div class="stats">
+    <div><b>LAST QTY</b><span id="lqty">—</span></div>
+    <div><b>LAST TIME</b><span id="ltime">—</span></div>
+    <div><b>PRINTS (BUFFER)</b><span id="count">0</span></div>
+    <div><b>PRINTS / SEC</b><span id="rate">0</span></div>
+    <div><b>TICK</b><span id="tick">—</span></div>
+    <div><b>BUFFER SPAN</b><span id="bufspan">—</span></div>
+  </div>
+  <div id="histbar"><span id="histstatus">History not loaded</span><span id="ohlc"></span></div>
+  <main>
+    <section class="chart"><canvas id="cv"></canvas><div id="tip"></div></section>
+    <section class="tape"><div class="thead"><span>TIME</span><span>PRICE</span><span>QTY</span><span>QUOTE QTY</span><span>SIDE</span></div><div id="rows"></div></section>
+  </main>
+  <footer><span id="channel">—</span><span>Direct browser → Vest public API/websocket. Prints shown exactly as reported.</span></footer>
+</div>
+<script src="terminal.js"></script></body></html>
